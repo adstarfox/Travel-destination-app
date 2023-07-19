@@ -19,11 +19,20 @@ function App() {
   return (
     <>
       <Header/>
-      <main>
-        {destinations.map(dest => {
-          return <DestinationCard name={dest.name} imageURL={dest.imageURL} notes={dest.notes} international={dest.international}/>
-        })}
-      </main>
+      <div id='main-container'>
+        <div>
+          <main >
+            {destinations.map(dest => {
+              return <DestinationCard name={dest.name} imageURL={dest.imageURL} notes={dest.notes} international={dest.international}/>
+            })}
+          </main>
+          </div>
+          <div>
+          <section>
+            <AddDestination/>
+          </section>
+        </div>
+      </div>
     </>
   )
 }
