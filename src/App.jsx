@@ -8,10 +8,13 @@ import axios from 'axios'
 function App() {
   const [destinations, setDestinations] = useState([])
 
+  const getAllDestinations = () => {
+    axios.get(`/api/destinations?apiKey=${import.meta.env.VITE_APP_API_KEY}`)
+    .then(res => setDestinations(res.data))
+  }
+
   useEffect(() => {
-    axios.get(`http://localhost:4545/api/destinations?apiKey=${import.meta.env.VITE_APP_API_KEY}`)
-      .then(res => setDestinations(res.data))
-      
+      getAllDestinations()
   }, [])
 
   console.log('hit App.jsx', destinations)
@@ -29,7 +32,7 @@ function App() {
           </div>
           <div>
           <section>
-            <AddDestination/>
+            <AddDestination getAllDestinations={getAllDestinations}/>
           </section>
         </div>
       </div>
